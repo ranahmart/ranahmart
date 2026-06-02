@@ -1,0 +1,1468 @@
+cat > /mnt/user-data/outputs/ranahmart-v2.html << 'ENDOFFILE'
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RanahMart — Marketplace Oleh-Oleh Minang #1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --r:#B91C1C;--rd:#7F1D1D;--ro:#DC2626;
+  --g:#C8922A;--gl:#F5C842;--gs:#FEF3C7;
+  --cr:#FFF8F0;--cd:#FEF0DC;
+  --dk:#1C0A00;--dk2:#3D1F00;
+  --gr:#6B7280;--bdr:#E5D5C0;
+  --wh:#FFFFFF;--lt:#FAF4EC;
+  --grn:#166534;--grn2:#DCFCE7;
+  --blu:#1E40AF;--blu2:#DBEAFE;
+  --sf:'DM Sans',sans-serif;
+  --sd:'Playfair Display',serif;
+  --sh:0 1px 8px rgba(180,100,20,.1);
+  --shh:0 8px 32px rgba(180,100,20,.18);
+  --rad:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:15px}
+body{font-family:var(--sf);background:var(--cr);color:var(--dk);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:var(--sf);border:none;outline:none}
+img{max-width:100%;display:block}
+input,select,textarea{font-family:var(--sf)}
+
+/* ─── TOPBAR ─── */
+.tb{background:var(--rd);color:#fff;font-size:11.5px;padding:6px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tb-links{display:flex;gap:14px}
+.tb a{color:rgba(255,255,255,.8);transition:color .15s}
+.tb a:hover{color:#fff}
+
+/* ─── HEADER ─── */
+header{background:var(--r);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.22)}
+.hdr{max-width:1240px;margin:auto;display:grid;grid-template-columns:190px 1fr auto;gap:14px;align-items:center;padding:11px 16px}
+.logo{display:flex;align-items:center;gap:9px;cursor:pointer;color:#fff}
+.logo-ico{width:42px;height:42px;background:var(--g);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.logo-name{font-family:var(--sd);font-size:22px;font-weight:800;line-height:1}
+.logo-sub{font-size:10px;opacity:.75;letter-spacing:.4px}
+.search-wrap{display:flex;background:#fff;border-radius:7px;overflow:hidden;box-shadow:0 0 0 2px rgba(255,255,255,.15)}
+.search-wrap input{flex:1;border:none;outline:none;padding:10px 14px;font-size:14px;color:var(--dk)}
+.search-wrap select{border:none;outline:none;border-left:1px solid #eee;padding:0 10px;font-size:12px;color:var(--gr);background:#fafafa;cursor:pointer}
+.search-btn{background:var(--g);border:none;padding:0 20px;color:#fff;font-size:16px;transition:background .2s;display:flex;align-items:center;justify-content:center}
+.search-btn:hover{background:var(--gl);color:var(--dk)}
+.hdr-acts{display:flex;align-items:center;gap:12px}
+.hdr-ico-wrap{position:relative;color:#fff;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;opacity:.9;transition:opacity .15s;background:none;border:none;font-size:12px}
+.hdr-ico-wrap:hover{opacity:1}
+.hdr-ico{font-size:22px;line-height:1}
+.ico-badge{position:absolute;top:-4px;right:-6px;background:var(--g);color:#fff;font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--r)}
+.hdr-btn{padding:7px 15px;border-radius:5px;font-size:13px;font-weight:600;transition:all .2s;border:none}
+.hdr-btn-out{background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#fff}
+.hdr-btn-out:hover{background:rgba(255,255,255,.1)}
+.hdr-btn-in{background:#fff;color:var(--r)}
+.hdr-btn-in:hover{background:var(--gs)}
+
+/* ─── NAV BAR ─── */
+.nav{background:var(--rd);padding:0 16px}
+.nav-in{max-width:1240px;margin:auto;display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.nit{color:#fff;font-size:13px;padding:9px 13px;opacity:.8;white-space:nowrap;display:flex;align-items:center;gap:5px;border-radius:4px;transition:all .2s;background:none;border:none;cursor:pointer}
+.nit:hover,.nit.on{background:rgba(255,255,255,.14);opacity:1}
+.nit.flash{color:var(--gl);font-weight:700}
+.nit.last{margin-left:auto;color:var(--gl)}
+
+/* ─── PROMO STRIP ─── */
+.pstrip{background:var(--g);text-align:center;padding:7px;font-size:12.5px;font-weight:600;color:#fff;letter-spacing:.3px}
+.pstrip span{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 8px;margin:0 4px}
+
+/* ─── PAGES ─── */
+.page{display:none}
+.page.on{display:block}
+
+/* ─── HERO ─── */
+.hero{background:linear-gradient(135deg,#7F1D1D 0%,#B91C1C 40%,#C8922A 100%);padding:0;overflow:hidden}
+.hero-in{max-width:1240px;margin:auto;display:grid;grid-template-columns:1.6fr .9fr;gap:8px;padding:8px}
+.hero-main{border-radius:12px;min-height:300px;background:linear-gradient(120deg,rgba(127,29,29,.95),rgba(185,28,28,.6)),url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23C8922A' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");display:flex;align-items:center;padding:40px 44px;position:relative;overflow:hidden}
+.hero-deco{position:absolute;right:30px;top:50%;transform:translateY(-50%);font-size:120px;opacity:.1;pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--g);color:#fff;font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:14px;letter-spacing:.8px}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{font-family:var(--sd);font-size:clamp(30px,4vw,52px);font-weight:900;color:#fff;line-height:1.08;margin-bottom:12px;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.hero h1 em{color:var(--gl);font-style:normal}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:22px;line-height:1.7;max-width:440px}
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.h-cta{padding:12px 24px;border-radius:7px;font-size:14px;font-weight:700;transition:all .2s;border:none;cursor:pointer;font-family:var(--sf)}
+.h-cta-main{background:var(--g);color:#fff}
+.h-cta-main:hover{background:var(--gl);color:var(--dk);transform:translateY(-2px)}
+.h-cta-out{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff}
+.h-cta-out:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.hero-side{display:grid;grid-template-rows:repeat(3,1fr);gap:8px}
+.hside-card{border-radius:10px;padding:16px 18px;color:#fff;position:relative;overflow:hidden;cursor:pointer;transition:transform .2s}
+.hside-card:hover{transform:scale(1.02)}
+.hside-card:nth-child(1){background:linear-gradient(135deg,#14532d,#16a34a)}
+.hside-card:nth-child(2){background:linear-gradient(135deg,#1e1b4b,#4338ca)}
+.hside-card:nth-child(3){background:linear-gradient(135deg,#7c2d12,#ea580c)}
+.hside-emo{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:32px;opacity:.25}
+.hside-card h4{font-size:14px;font-weight:700;margin-bottom:3px}
+.hside-card p{font-size:11px;opacity:.75}
+
+/* ─── STATS BAR ─── */
+.stats-bar{background:#fff;border-bottom:1px solid var(--bdr)}
+.stats-in{max-width:1240px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);padding:14px 16px}
+.stat-item{text-align:center;padding:8px;border-right:1px solid var(--bdr)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:var(--sd);font-size:24px;font-weight:700;color:var(--r)}
+.stat-lbl{font-size:11px;color:var(--gr);margin-top:2px}
+
+/* ─── LAYOUT ─── */
+.sec{max-width:1240px;margin:0 auto;padding:18px 16px}
+.sec-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.sec-ttl{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
+.sec-ttl::before{content:'';width:4px;height:20px;background:var(--r);border-radius:2px;display:block}
+.see-all{color:var(--r);font-size:13px;font-weight:600;cursor:pointer}
+.see-all:hover{text-decoration:underline}
+
+/* ─── CATEGORIES ─── */
+.cats{display:grid;grid-template-columns:repeat(10,1fr);gap:9px}
+.cat{display:flex;flex-direction:column;align-items:center;gap:7px;padding:13px 7px;background:#fff;border-radius:10px;cursor:pointer;transition:all .2s;border:1.5px solid transparent}
+.cat:hover,.cat.on{border-color:var(--g);transform:translateY(-3px);box-shadow:var(--shh)}
+.cat-ico{font-size:28px}
+.cat-nm{font-size:10.5px;font-weight:600;text-align:center;line-height:1.3;color:var(--dk)}
+
+/* ─── FLASH SALE HEADER ─── */
+.flash-hdr{background:linear-gradient(90deg,var(--rd),var(--r));padding:12px 16px}
+.flash-in{max-width:1240px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.flash-ttl{color:#fff;font-size:17px;font-weight:800;display:flex;align-items:center;gap:10px}
+.timer{display:flex;gap:5px;align-items:center}
+.t-box{background:#fff;color:var(--r);font-weight:800;font-size:17px;padding:4px 10px;border-radius:4px;min-width:34px;text-align:center}
+.t-sep{color:#fff;font-weight:800;font-size:16px}
+
+/* ─── FILTER BAR ─── */
+.filter-bar{background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.filter-lbl{font-size:12px;font-weight:700;color:var(--gr);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.filter-chips{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.fchip{font-size:12px;padding:5px 13px;border-radius:20px;border:1.5px solid var(--bdr);color:var(--gr);cursor:pointer;transition:all .15s;background:#fff;white-space:nowrap}
+.fchip:hover,.fchip.on{border-color:var(--r);color:var(--r);background:rgba(185,28,28,.05)}
+.filter-sort{display:flex;align-items:center;gap:6px}
+.filter-sort label{font-size:12px;color:var(--gr);white-space:nowrap}
+.filter-sort select{font-size:12px;border:1.5px solid var(--bdr);border-radius:6px;padding:5px 10px;cursor:pointer;color:var(--dk);outline:none}
+.price-range{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gr)}
+.price-range input{width:90px;border:1.5px solid var(--bdr);border-radius:6px;padding:5px 8px;font-size:12px;outline:none}
+
+/* ─── PRODUCT GRID ─── */
+.products-wrap{background:#fff;border-radius:0 0 10px 10px;padding:14px}
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}
+.pcard{border-radius:10px;border:1.5px solid var(--bdr);background:#fff;cursor:pointer;transition:all .22s;position:relative;overflow:hidden}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shh);border-color:var(--g)}
+.pimg-wrap{overflow:hidden;position:relative}
+.pimg{width:100%;aspect-ratio:1;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:52px;background:var(--lt);transition:transform .35s}
+.pcard:hover .pimg{transform:scale(1.06)}
+.p-new{position:absolute;top:8px;left:8px;background:var(--r);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;z-index:1}
+.p-hot{position:absolute;top:8px;left:8px;background:#ea580c;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;z-index:1}
+.p-fship{position:absolute;bottom:8px;left:8px;background:var(--grn2);color:var(--grn);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;z-index:1}
+.wish-btn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.92);border:none;width:30px;height:30px;border-radius:50%;font-size:15px;display:flex;align-items:center;justify-content:center;opacity:0;transition:all .2s;z-index:1}
+.pcard:hover .wish-btn,.wish-btn.liked{opacity:1}
+.wish-btn.liked{background:var(--r);color:#fff}
+.pinfo{padding:10px}
+.pname{font-size:12.5px;font-weight:600;line-height:1.45;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--dk)}
+.pprice-row{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.pprice{color:var(--r);font-size:15px;font-weight:700}
+.pdisc{background:var(--g);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px}
+.pold{color:var(--gr);font-size:11px;text-decoration:line-through}
+.pmeta{display:flex;justify-content:space-between;align-items:center;margin-top:5px}
+.prating{font-size:11px;color:var(--g)}
+.psold{font-size:11px;color:var(--gr)}
+.pseller{font-size:11px;color:var(--gr);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.padd{width:100%;background:var(--r);color:#fff;border:none;padding:8px;font-size:12px;font-weight:700;border-radius:0 0 8px 8px;transition:background .2s;opacity:0;transform:translateY(4px);transition:all .2s}
+.pcard:hover .padd{opacity:1;transform:translateY(0)}
+.padd:hover{background:var(--rd)}
+.no-results{text-align:center;padding:48px 20px;color:var(--gr);font-size:15px;grid-column:1/-1}
+
+/* ─── PRODUCT DETAIL PAGE ─── */
+.detail-wrap{max-width:1240px;margin:0 auto;padding:20px 16px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.detail-imgs{position:sticky;top:80px}
+.detail-main-img{width:100%;aspect-ratio:1;background:var(--lt);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:120px;margin-bottom:10px;border:2px solid var(--bdr)}
+.detail-thumbs{display:flex;gap:8px}
+.d-thumb{width:60px;height:60px;background:var(--lt);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;border:2px solid transparent;transition:border-color .2s}
+.d-thumb.on{border-color:var(--g)}
+.detail-info .bread{font-size:12px;color:var(--gr);margin-bottom:12px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.bread span{color:var(--r);cursor:pointer}
+.d-name{font-family:var(--sd);font-size:clamp(20px,2.5vw,28px);font-weight:700;line-height:1.2;margin-bottom:10px}
+.d-rating-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.d-stars{color:var(--g);font-size:14px}
+.d-sold-lbl{font-size:12px;color:var(--gr)}
+.d-price-box{background:var(--lt);border-radius:10px;padding:16px;margin-bottom:16px}
+.d-price{font-size:32px;font-weight:700;color:var(--r);font-family:var(--sd)}
+.d-old-price{font-size:14px;color:var(--gr);text-decoration:line-through}
+.d-disc-badge{background:var(--r);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:5px;display:inline-block;margin-bottom:4px}
+.d-variants{margin-bottom:16px}
+.d-var-lbl{font-size:13px;font-weight:700;margin-bottom:8px}
+.d-var-chips{display:flex;gap:7px;flex-wrap:wrap}
+.vchip{padding:6px 14px;border-radius:6px;border:1.5px solid var(--bdr);font-size:12.5px;cursor:pointer;transition:all .15s}
+.vchip.on{border-color:var(--r);color:var(--r);background:rgba(185,28,28,.05)}
+.d-qty{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.qty-btn{width:34px;height:34px;border-radius:6px;border:1.5px solid var(--bdr);background:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
+.qty-btn:hover{border-color:var(--r);color:var(--r)}
+.qty-val{font-size:16px;font-weight:700;min-width:30px;text-align:center}
+.d-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.d-btn{padding:13px;border-radius:8px;font-size:14px;font-weight:700;transition:all .2s;border:none;cursor:pointer;font-family:var(--sf)}
+.d-btn-main{background:var(--r);color:#fff}
+.d-btn-main:hover{background:var(--rd)}
+.d-btn-out{background:#fff;color:var(--g);border:2px solid var(--g)}
+.d-btn-out:hover{background:var(--gs)}
+.d-btn-wa{background:#25D366;color:#fff}
+.d-btn-wa:hover{background:#128C7E}
+.d-seller-card{background:#fff;border:1.5px solid var(--bdr);border-radius:10px;padding:14px;margin-bottom:16px}
+.d-sc-top{display:flex;align-items:center;gap:12px}
+.d-sc-ico{width:48px;height:48px;background:var(--r);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff}
+.d-sc-name{font-weight:700;font-size:14px}
+.d-sc-loc{font-size:12px;color:var(--gr)}
+.d-guarantees{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.d-gua-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gr);background:var(--lt);border-radius:8px;padding:8px 10px}
+.d-gua-item span{font-size:16px}
+.d-desc{font-size:13.5px;color:var(--dk2);line-height:1.75}
+.d-tabs{display:flex;gap:0;border-bottom:2px solid var(--bdr);margin-bottom:16px}
+.d-tab{padding:10px 18px;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--gr);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.d-tab.on{color:var(--r);border-color:var(--r)}
+.d-tab-content{display:none}
+.d-tab-content.on{display:block}
+.review-item{padding:14px 0;border-bottom:1px solid var(--bdr)}
+.review-item:last-child{border-bottom:none}
+.rev-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.rev-avatar{width:36px;height:36px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:700;flex-shrink:0}
+.rev-name{font-size:13px;font-weight:700}
+.rev-date{font-size:11px;color:var(--gr)}
+.rev-stars{color:var(--g);font-size:12px}
+.rev-txt{font-size:13px;color:var(--dk2);line-height:1.65}
+
+/* ─── SELLER BANNER ─── */
+.sbanner{background:linear-gradient(135deg,var(--gs),#fff);border:2px solid var(--g);border-radius:12px;padding:28px 36px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;margin:0 auto 20px;max-width:1240px}
+.sbanner h3{font-family:var(--sd);font-size:22px;color:var(--rd);margin-bottom:8px}
+.sbanner p{font-size:13px;color:var(--gr);margin-bottom:10px}
+.sbanner ul{list-style:none;display:flex;flex-direction:column;gap:4px}
+.sbanner li{font-size:13px;color:var(--dk);display:flex;align-items:center;gap:6px}
+.btn-seller{background:var(--g);color:#fff;border:none;padding:14px 30px;border-radius:8px;font-size:14.5px;font-weight:700;white-space:nowrap;font-family:var(--sf);transition:all .2s}
+.btn-seller:hover{background:var(--r);transform:scale(1.04)}
+
+/* ─── REGIONS ─── */
+.regions{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.rcard{background:#fff;border-radius:10px;padding:14px 10px;text-align:center;border:1.5px solid var(--bdr);cursor:pointer;transition:all .2s}
+.rcard:hover{border-color:var(--g);box-shadow:var(--shh);transform:translateY(-2px)}
+.remo{font-size:28px;margin-bottom:5px}
+.rnm{font-size:12px;font-weight:700;color:var(--dk)}
+.rcnt{font-size:11px;color:var(--gr)}
+
+/* ─── CART SIDEBAR ─── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500}
+.overlay.on{display:block}
+.sidebar{position:fixed;top:0;right:-440px;width:420px;max-width:100vw;height:100vh;background:#fff;z-index:600;transition:right .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-4px 0 24px rgba(0,0,0,.15)}
+.sidebar.on{right:0}
+.sb-hdr{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--bdr)}
+.sb-ttl{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
+.sb-close{background:var(--lt);border:none;width:32px;height:32px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gr)}
+.sb-body{flex:1;overflow-y:auto;padding:16px 20px}
+.cart-item{display:flex;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--bdr)}
+.ci-img{font-size:36px;width:60px;height:60px;background:var(--lt);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-info{flex:1;min-width:0}
+.ci-nm{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+.ci-pr{color:var(--r);font-weight:700;font-size:14px}
+.ci-seller{font-size:11px;color:var(--gr)}
+.ci-qty{display:flex;align-items:center;gap:7px;margin-top:6px}
+.cq-btn{width:26px;height:26px;border-radius:5px;border:1px solid var(--bdr);background:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.cq-btn:hover{border-color:var(--r);color:var(--r)}
+.cq-val{font-size:13px;font-weight:700;min-width:24px;text-align:center}
+.ci-del{background:none;border:none;color:var(--gr);cursor:pointer;font-size:17px;transition:color .15s;padding:2px}
+.ci-del:hover{color:var(--r)}
+.sb-footer{padding:16px 20px;border-top:1px solid var(--bdr)}
+.sb-coupon{display:flex;gap:8px;margin-bottom:14px}
+.sb-coupon input{flex:1;border:1.5px solid var(--bdr);border-radius:7px;padding:9px 12px;font-size:13px;outline:none;transition:border-color .15s}
+.sb-coupon input:focus{border-color:var(--g)}
+.sb-coupon button{background:var(--g);color:#fff;border:none;padding:9px 16px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s}
+.sb-coupon button:hover{background:var(--gl);color:var(--dk)}
+.sb-sum-row{display:flex;justify-content:space-between;font-size:13px;color:var(--gr);margin-bottom:6px}
+.sb-sum-row.total{font-size:16px;font-weight:700;color:var(--dk);border-top:1px solid var(--bdr);padding-top:10px;margin-top:6px}
+.sb-sum-row.total .amt{color:var(--r)}
+.btn-checkout{width:100%;background:var(--r);color:#fff;border:none;padding:14px;border-radius:8px;font-size:15px;font-weight:700;font-family:var(--sf);cursor:pointer;transition:background .2s;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-checkout:hover{background:var(--rd)}
+.cart-empty{text-align:center;padding:48px 20px;color:var(--gr)}
+.cart-empty .e-ico{font-size:56px;margin-bottom:14px}
+
+/* ─── MODALS ─── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:700;align-items:center;justify-content:center;padding:20px}
+.modal-bg.on{display:flex}
+.modal{background:#fff;border-radius:16px;width:520px;max-width:100%;max-height:88vh;overflow-y:auto;padding:28px;animation:mIn .28s ease}
+@keyframes mIn{from{transform:translateY(24px) scale(.97);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+.modal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.modal-ttl{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+.modal-x{background:var(--lt);border:none;width:32px;height:32px;border-radius:50%;font-size:17px;cursor:pointer;color:var(--gr);display:flex;align-items:center;justify-content:center}
+
+/* ─── FORMS ─── */
+.form-grid{display:grid;gap:13px}
+.form-grid.g2{grid-template-columns:1fr 1fr}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:12.5px;font-weight:700;color:var(--dk2)}
+.fg input,.fg select,.fg textarea{padding:10px 13px;border:1.5px solid var(--bdr);border-radius:7px;font-size:13.5px;outline:none;transition:border-color .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--g)}
+.fg-hint{font-size:11px;color:var(--gr)}
+.form-info{background:var(--gs);border-radius:8px;padding:11px 14px;font-size:12.5px;color:var(--dk2);margin-bottom:4px}
+.btn-submit{background:var(--r);color:#fff;border:none;padding:13px 20px;border-radius:8px;font-size:15px;font-weight:700;font-family:var(--sf);cursor:pointer;transition:background .2s;width:100%}
+.btn-submit:hover{background:var(--rd)}
+
+/* ─── CHECKOUT MODAL ─── */
+.ck-steps{display:flex;gap:0;margin-bottom:22px;border-bottom:1px solid var(--bdr)}
+.ck-step{flex:1;text-align:center;padding:10px;font-size:12px;font-weight:600;color:var(--gr);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+.ck-step.on{color:var(--r);border-color:var(--r)}
+.ck-step.done{color:var(--grn)}
+.ck-content{display:none}
+.ck-content.on{display:block}
+.ck-sum-item{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bdr)}
+.ck-si-img{font-size:24px;width:44px;height:44px;background:var(--lt);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ck-si-nm{font-size:13px;font-weight:600}
+.ck-si-pr{font-size:13px;color:var(--r);font-weight:700}
+.pay-method{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+.pm-item{border:1.5px solid var(--bdr);border-radius:8px;padding:11px 13px;cursor:pointer;transition:all .15s;text-align:center;font-size:13px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:4px}
+.pm-item:hover,.pm-item.on{border-color:var(--r);background:rgba(185,28,28,.04);color:var(--r)}
+.pm-item .pm-ico{font-size:22px}
+
+/* ─── NOTIFICATION ─── */
+.notif-drop{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border-radius:12px;width:340px;box-shadow:0 8px 32px rgba(0,0,0,.15);border:1px solid var(--bdr);overflow:hidden;display:none;z-index:400}
+.notif-drop.on{display:block;animation:mIn .2s ease}
+.notif-hdr-bar{padding:13px 16px;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
+.notif-hdr-bar h4{font-size:14px;font-weight:700}
+.notif-hdr-bar button{font-size:11px;color:var(--r);background:none;border:none;cursor:pointer;font-weight:600}
+.notif-item{display:flex;gap:10px;align-items:flex-start;padding:11px 16px;border-bottom:1px solid var(--bdr);cursor:pointer;transition:background .15s}
+.notif-item:hover{background:var(--lt)}
+.notif-item:last-child{border-bottom:none}
+.notif-item.unread{background:rgba(200,146,42,.04)}
+.notif-ico{font-size:22px;flex-shrink:0;margin-top:1px}
+.notif-body{flex:1}
+.notif-title{font-size:13px;font-weight:600;margin-bottom:2px}
+.notif-sub{font-size:11.5px;color:var(--gr);line-height:1.5}
+.notif-time{font-size:10.5px;color:var(--gr);white-space:nowrap}
+.notif-dot{width:7px;height:7px;border-radius:50%;background:var(--r);flex-shrink:0;margin-top:4px}
+.hdr-ico-pos{position:relative}
+
+/* ─── WISHLIST SIDEBAR ─── */
+.wl-item{display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--bdr)}
+
+/* ─── SELLER DASHBOARD ─── */
+.seller-dash{max-width:1240px;margin:0 auto;padding:20px 16px}
+.dash-grid{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start}
+.dash-sidebar{background:#fff;border-radius:12px;border:1px solid var(--bdr);overflow:hidden;position:sticky;top:80px}
+.dash-sb-hdr{background:var(--r);padding:20px;color:#fff}
+.dash-sb-hdr h4{font-weight:700;font-size:15px;margin-bottom:2px}
+.dash-sb-hdr p{font-size:11.5px;opacity:.8}
+.dash-menu-item{display:flex;align-items:center;gap:10px;padding:11px 16px;font-size:13.5px;color:var(--dk);cursor:pointer;transition:all .15s;border-left:3px solid transparent}
+.dash-menu-item:hover,.dash-menu-item.on{background:var(--lt);color:var(--r);border-color:var(--r)}
+.dash-menu-item .di{font-size:18px;flex-shrink:0}
+.dash-content{background:#fff;border-radius:12px;border:1px solid var(--bdr);padding:22px}
+.dash-ttl{font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.d-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.d-kpi{background:var(--lt);border-radius:10px;padding:16px}
+.d-kpi-n{font-family:var(--sd);font-size:26px;font-weight:700;color:var(--r)}
+.d-kpi-l{font-size:11px;color:var(--gr);margin-top:3px}
+.d-kpi-trend{font-size:12px;color:var(--grn);font-weight:600;margin-top:4px}
+.dash-table{width:100%;border-collapse:collapse;font-size:13px}
+.dash-table th{text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gr);padding:8px 12px;border-bottom:2px solid var(--bdr)}
+.dash-table td{padding:11px 12px;border-bottom:1px solid var(--bdr);vertical-align:middle}
+.dash-table tr:last-child td{border-bottom:none}
+.dash-table tr:hover td{background:var(--lt)}
+.order-status{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700}
+.os-new{background:#FEF3C7;color:#92400E}
+.os-process{background:#DBEAFE;color:#1E40AF}
+.os-sent{background:#D1FAE5;color:#065F46}
+.os-done{background:#F3F4F6;color:#374151}
+.dash-tab-content{display:none}
+.dash-tab-content.on{display:block}
+
+/* ─── TOAST ─── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--dk);color:#fff;padding:12px 20px;border-radius:9px;font-size:13.5px;font-weight:600;transform:translateY(60px);opacity:0;transition:all .3s;z-index:900;display:flex;align-items:center;gap:8px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.toast.on{transform:translateY(0);opacity:1}
+
+/* ─── WA FLOAT ─── */
+.wa-float{position:fixed;bottom:24px;right:24px;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(37,211,102,.4);cursor:pointer;z-index:300;transition:all .2s;border:none}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,.5)}
+.wa-float.hide{right:80px}
+
+/* ─── FOOTER ─── */
+footer{background:var(--dk);color:#aaa;padding:40px 16px 20px;margin-top:36px}
+.foot-in{max-width:1240px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px;margin-bottom:28px}
+.foot-brand .logo-text{color:#fff}
+.foot-brand p{font-size:13px;line-height:1.75;margin-top:10px;color:#888}
+.foot-brand .contact-info{margin-top:12px;font-size:12.5px;color:#888;display:flex;flex-direction:column;gap:5px}
+.foot-col h5{color:#fff;font-size:13.5px;font-weight:700;margin-bottom:13px}
+.foot-col a{display:block;font-size:13px;color:#888;margin-bottom:8px;transition:color .15s;cursor:pointer}
+.foot-col a:hover{color:var(--g)}
+.foot-bottom{border-top:1px solid #2a2a2a;padding-top:18px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#555;flex-wrap:wrap;gap:8px}
+.foot-pay{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pay-badge{background:#2a2a2a;color:#aaa;font-size:10px;font-weight:700;padding:4px 10px;border-radius:4px}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hdr{grid-template-columns:auto 1fr}
+  .hdr-acts .hdr-btn{display:none}
+  .hero-in{grid-template-columns:1fr}
+  .hero-side{display:none}
+  .cats{grid-template-columns:repeat(5,1fr)}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .regions{grid-template-columns:repeat(3,1fr)}
+  .foot-in{grid-template-columns:1fr 1fr}
+  .sbanner{grid-template-columns:1fr}
+  .detail-grid{grid-template-columns:1fr}
+  .dash-grid{grid-template-columns:1fr}
+  .d-kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-in{grid-template-columns:repeat(2,1fr)}
+  .form-grid.g2{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .cats{grid-template-columns:repeat(4,1fr)}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:26px}
+  .sidebar{width:100vw}
+  .stats-in{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="tb">
+  <div>🏆 Marketplace Oleh-Oleh Minang #1 — Dikirim ke Seluruh Indonesia & Mancanegara</div>
+  <div class="tb-links">
+    <a onclick="openSellerModal()">Daftar Jadi Seller</a>
+    <a onclick="toast('Fitur lacak pesanan segera hadir!','📦')">Lacak Pesanan</a>
+    <a onclick="toast('Bantuan tersedia via WhatsApp!','💬')">Bantuan</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="hdr">
+    <div class="logo" onclick="goHome()">
+      <div class="logo-ico">🍢</div>
+      <div>
+        <div class="logo-name">RanahMart</div>
+        <div class="logo-sub">Oleh-Oleh Minang Asli</div>
+      </div>
+    </div>
+    <div class="search-wrap">
+      <input type="text" id="srch" placeholder="Cari rendang, keripik sanjai, batik Minang, kopi Solok..." onkeydown="if(event.key==='Enter')doSearch()">
+      <select id="srch-cat" style="min-width:110px">
+        <option value="all">Semua</option>
+        <option value="rendang">Makanan</option>
+        <option value="keripik">Keripik</option>
+        <option value="batik">Fashion</option>
+        <option value="kerajinan">Kerajinan</option>
+        <option value="kopi">Minuman</option>
+      </select>
+      <button class="search-btn" onclick="doSearch()">🔍</button>
+    </div>
+    <div class="hdr-acts">
+      <div class="hdr-ico-pos">
+        <button class="hdr-ico-wrap" onclick="toggleNotif()">
+          <div class="hdr-ico">🔔<span class="ico-badge" id="notif-badge">3</span></div>
+          <span>Notifikasi</span>
+        </button>
+        <div class="notif-drop" id="notif-drop">
+          <div class="notif-hdr-bar"><h4>Notifikasi</h4><button onclick="markAllRead()">Tandai semua dibaca</button></div>
+          <div class="notif-item unread" onclick="closeNotif()">
+            <div class="notif-ico">🎉</div>
+            <div class="notif-body">
+              <div class="notif-title">Pesanan Anda dikirim!</div>
+              <div class="notif-sub">Rendang Bu Eti 500gr · Resi: JNE1234567</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px"><div class="notif-time">2 mnt</div><div class="notif-dot"></div></div>
+          </div>
+          <div class="notif-item unread" onclick="closeNotif()">
+            <div class="notif-ico">⚡</div>
+            <div class="notif-body">
+              <div class="notif-title">Flash Sale dimulai!</div>
+              <div class="notif-sub">Diskon hingga 60% untuk produk pilihan</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px"><div class="notif-time">15 mnt</div><div class="notif-dot"></div></div>
+          </div>
+          <div class="notif-item unread" onclick="closeNotif()">
+            <div class="notif-ico">🎁</div>
+            <div class="notif-body">
+              <div class="notif-title">Voucher baru untukmu!</div>
+              <div class="notif-sub">Kode RANAHFIRST — Gratis ongkir pembelian pertama</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px"><div class="notif-time">1 jam</div><div class="notif-dot"></div></div>
+          </div>
+          <div class="notif-item" onclick="closeNotif()">
+            <div class="notif-ico">⭐</div>
+            <div class="notif-body">
+              <div class="notif-title">Beri ulasan pesananmu</div>
+              <div class="notif-sub">Keripik Sanjai Mak Itam belum diulas</div>
+            </div>
+            <div class="notif-time">Kemarin</div>
+          </div>
+        </div>
+      </div>
+      <button class="hdr-ico-wrap" onclick="toggleWishlist()">
+        <div class="hdr-ico">❤️<span class="ico-badge" id="wl-badge">0</span></div>
+        <span>Wishlist</span>
+      </button>
+      <button class="hdr-ico-wrap" onclick="toggleCart()">
+        <div class="hdr-ico">🛒<span class="ico-badge" id="cart-badge">0</span></div>
+        <span>Keranjang</span>
+      </button>
+      <button class="hdr-btn hdr-btn-out" onclick="openLoginModal()">Masuk</button>
+      <button class="hdr-btn hdr-btn-in" onclick="openSellerModal()">Daftar Seller</button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV BAR -->
+<div class="nav">
+  <div class="nav-in">
+    <button class="nit on" onclick="goHome()">🏠 Beranda</button>
+    <button class="nit flash" onclick="scrollTo('#flash-sec')">⚡ Flash Sale</button>
+    <button class="nit" onclick="filterCat('rendang')">🥩 Makanan</button>
+    <button class="nit" onclick="filterCat('keripik')">🍟 Keripik</button>
+    <button class="nit" onclick="filterCat('batik')">👗 Fashion</button>
+    <button class="nit" onclick="filterCat('kerajinan')">🏺 Kerajinan</button>
+    <button class="nit" onclick="filterCat('kopi')">☕ Minuman</button>
+    <button class="nit" onclick="filterCat('hampers')">📦 Hampers</button>
+    <button class="nit" onclick="filterCat('bumbu')">🌶️ Bumbu</button>
+    <button class="nit" onclick="openSellerDash()">📊 Seller Center</button>
+    <button class="nit last">🚚 Gratis Ongkir →</button>
+  </div>
+</div>
+
+<!-- PROMO STRIP -->
+<div class="pstrip">🎉 Gratis Ongkir pembelian pertama! Kode: <span>RANAHFIRST</span> | 🌟 Rating 4.9/5 dari 15.000+ pembeli | 🚀 Pengiriman same-day ke Padang, Bukittinggi</div>
+
+<!-- ═══════════════ HOME PAGE ═══════════════ -->
+<div class="page on" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-in">
+      <div class="hero-main">
+        <div>
+          <div class="hero-tag">PILIHAN PERANTAU MINANG</div>
+          <h1>Rasa <em>Ranah Minang</em><br>Sampai ke Mana Saja</h1>
+          <p class="hero-sub">Rendang asli, Keripik Sanjai, Batik Minang, Kopi Solok — langsung dari tangan pengrajin dan UMKM asli Minangkabau ke pintu rumahmu.</p>
+          <div class="hero-ctas">
+            <button class="h-cta h-cta-main" onclick="scrollTo('#prods-sec')">Belanja Sekarang →</button>
+            <button class="h-cta h-cta-out" onclick="openSellerModal()">🏪 Buka Toko Gratis</button>
+          </div>
+        </div>
+        <div class="hero-deco">🍽️</div>
+      </div>
+      <div class="hero-side">
+        <div class="hside-card" onclick="scrollTo('#flash-sec')">
+          <div class="hside-emo">⚡</div>
+          <h4>Flash Sale Hari Ini</h4>
+          <p>Diskon hingga 60% — berakhir dalam 3 jam</p>
+        </div>
+        <div class="hside-card" onclick="filterCat('hampers')">
+          <div class="hside-emo">🎁</div>
+          <h4>Hampers Spesial</h4>
+          <p>Paket hadiah eksklusif khas Minang</p>
+        </div>
+        <div class="hside-card" onclick="filterCat('rendang')">
+          <div class="hside-emo">❄️</div>
+          <h4>Rendang Frozen</h4>
+          <p>Kirim ke seluruh Indonesia, tiba segar</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-in">
+      <div class="stat-item"><div class="stat-num">15.000+</div><div class="stat-lbl">Pembeli Terdaftar</div></div>
+      <div class="stat-item"><div class="stat-num">320+</div><div class="stat-lbl">Seller Aktif</div></div>
+      <div class="stat-item"><div class="stat-num">4.9⭐</div><div class="stat-lbl">Rating Platform</div></div>
+      <div class="stat-item"><div class="stat-num">1.200+</div><div class="stat-lbl">Produk Tersedia</div></div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="sec">
+    <div class="sec-hdr"><div class="sec-ttl">Kategori</div><span class="see-all" onclick="filterCat('all')">Lihat Semua ›</span></div>
+    <div class="cats">
+      <div class="cat" onclick="filterCat('rendang')"><div class="cat-ico">🥩</div><div class="cat-nm">Rendang & Lauk</div></div>
+      <div class="cat" onclick="filterCat('keripik')"><div class="cat-ico">🍟</div><div class="cat-nm">Keripik & Snack</div></div>
+      <div class="cat" onclick="filterCat('kue')"><div class="cat-ico">🍰</div><div class="cat-nm">Kue Tradisional</div></div>
+      <div class="cat" onclick="filterCat('batik')"><div class="cat-ico">👗</div><div class="cat-nm">Fashion Minang</div></div>
+      <div class="cat" onclick="filterCat('kerajinan')"><div class="cat-ico">🏺</div><div class="cat-nm">Kerajinan</div></div>
+      <div class="cat" onclick="filterCat('kopi')"><div class="cat-ico">☕</div><div class="cat-nm">Kopi & Teh</div></div>
+      <div class="cat" onclick="filterCat('bumbu')"><div class="cat-ico">🌶️</div><div class="cat-nm">Bumbu & Rempah</div></div>
+      <div class="cat" onclick="filterCat('hampers')"><div class="cat-ico">🎁</div><div class="cat-nm">Hampers & Gift</div></div>
+      <div class="cat" onclick="filterCat('perhiasan')"><div class="cat-ico">💍</div><div class="cat-nm">Perhiasan Perak</div></div>
+      <div class="cat" onclick="filterCat('all')"><div class="cat-ico">🗺️</div><div class="cat-nm">Semua Produk</div></div>
+    </div>
+  </div>
+
+  <!-- FLASH SALE -->
+  <div id="flash-sec">
+    <div class="flash-hdr">
+      <div class="flash-in">
+        <div class="flash-ttl">⚡ FLASH SALE
+          <div class="timer"><div class="t-box" id="th">03</div><span class="t-sep">:</span><div class="t-box" id="tm">28</div><span class="t-sep">:</span><div class="t-box" id="ts">00</div></div>
+        </div>
+        <span class="see-all" style="color:#fff" onclick="filterCat('all')">Lihat Semua ›</span>
+      </div>
+    </div>
+    <div class="sec" id="prods-sec">
+      <div class="filter-bar">
+        <span class="filter-lbl">Filter:</span>
+        <div class="filter-chips" id="filter-chips">
+          <span class="fchip on" onclick="sortFilter('all',this)">Semua</span>
+          <span class="fchip" onclick="sortFilter('new',this)">🆕 Terbaru</span>
+          <span class="fchip" onclick="sortFilter('best',this)">🔥 Terlaris</span>
+          <span class="fchip" onclick="sortFilter('rating',this)">⭐ Rating Tertinggi</span>
+          <span class="fchip" onclick="sortFilter('disc',this)">🏷️ Diskon Terbesar</span>
+          <span class="fchip" onclick="sortFilter('fship',this)">🚚 Gratis Ongkir</span>
+        </div>
+        <div class="price-range">
+          <input type="number" id="pmin" placeholder="Min (Rp)" oninput="applyPriceFilter()">
+          <span style="color:var(--gr)">—</span>
+          <input type="number" id="pmax" placeholder="Max (Rp)" oninput="applyPriceFilter()">
+        </div>
+        <div class="filter-sort">
+          <label>Urutkan:</label>
+          <select onchange="applySort(this.value)">
+            <option value="default">Default</option>
+            <option value="price-asc">Harga Terendah</option>
+            <option value="price-desc">Harga Tertinggi</option>
+            <option value="sold">Terlaris</option>
+            <option value="rating">Rating</option>
+          </select>
+        </div>
+      </div>
+      <div class="products-wrap">
+        <div class="pgrid" id="pgrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELLER BANNER -->
+  <div class="sbanner" style="margin-left:16px;margin-right:16px">
+    <div>
+      <h3>🏪 Buka Toko Oleh-Oleh Minangmu — GRATIS!</h3>
+      <p>Bergabunglah dengan 320+ seller dari Padang, Bukittinggi, Payakumbuh, Solok, dan kota Minang lainnya.</p>
+      <ul>
+        <li>✅ Daftar gratis, komisi 0% selama 3 bulan pertama</li>
+        <li>✅ Dashboard seller lengkap — kelola produk & pesanan sendiri</li>
+        <li>✅ Jangkau perantau Minang di 34 provinsi + luar negeri</li>
+        <li>✅ Notifikasi otomatis via WhatsApp saat ada pesanan</li>
+        <li>✅ Tim support siap bantu onboarding toko Anda</li>
+      </ul>
+    </div>
+    <button class="btn-seller" onclick="openSellerModal()">Daftar Jadi Seller →</button>
+  </div>
+
+  <!-- REGIONS -->
+  <div class="sec">
+    <div class="sec-hdr"><div class="sec-ttl">Belanja per Daerah</div><span class="see-all">Lihat Semua ›</span></div>
+    <div class="regions">
+      <div class="rcard" onclick="filterCat('all')"><div class="remo">🌆</div><div class="rnm">Kota Padang</div><div class="rcnt">234 produk</div></div>
+      <div class="rcard" onclick="filterCat('all')"><div class="remo">🏔️</div><div class="rnm">Bukittinggi</div><div class="rcnt">187 produk</div></div>
+      <div class="rcard" onclick="filterCat('all')"><div class="remo">🌾</div><div class="rnm">Payakumbuh</div><div class="rcnt">142 produk</div></div>
+      <div class="rcard" onclick="filterCat('kopi')"><div class="remo">🌿</div><div class="rnm">Solok</div><div class="rcnt">98 produk</div></div>
+      <div class="rcard" onclick="filterCat('all')"><div class="remo">🌊</div><div class="rnm">Pariaman</div><div class="rcnt">76 produk</div></div>
+      <div class="rcard" onclick="filterCat('kerajinan')"><div class="remo">🏝️</div><div class="rnm">Sawahlunto</div><div class="rcnt">54 produk</div></div>
+    </div>
+  </div>
+
+  <!-- MORE PRODUCTS -->
+  <div class="sec">
+    <div class="sec-hdr"><div class="sec-ttl">Produk Terlaris</div><span class="see-all" onclick="filterCat('all')">Lihat Semua ›</span></div>
+    <div class="products-wrap">
+      <div class="pgrid" id="pgrid2"></div>
+    </div>
+  </div>
+
+</div><!-- end home -->
+
+<!-- ═══════════════ PRODUCT DETAIL PAGE ═══════════════ -->
+<div class="page" id="page-detail">
+  <div class="detail-wrap">
+    <div class="detail-info" style="margin-bottom:12px">
+      <div class="bread" id="bread">
+        <span onclick="goHome()" style="cursor:pointer;color:var(--r)">Beranda</span> /
+        <span id="bread-cat" style="cursor:pointer;color:var(--r)"></span> /
+        <span id="bread-name"></span>
+      </div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-imgs">
+        <div class="detail-main-img" id="d-main-img">🥩</div>
+        <div class="detail-thumbs" id="d-thumbs"></div>
+      </div>
+      <div class="detail-info">
+        <div id="d-name" class="d-name"></div>
+        <div class="d-rating-row">
+          <div class="d-stars" id="d-stars">⭐⭐⭐⭐⭐</div>
+          <span id="d-rating-val" style="font-size:14px;font-weight:700;color:var(--g)"></span>
+          <span class="d-sold-lbl" id="d-sold-lbl"></span>
+          <span class="d-sold-lbl" id="d-review-count"></span>
+        </div>
+        <div class="d-price-box">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+            <span class="d-disc-badge" id="d-disc-badge"></span>
+            <span class="d-old-price" id="d-old"></span>
+          </div>
+          <div class="d-price" id="d-price"></div>
+          <div style="font-size:12px;color:var(--grn);margin-top:6px;font-weight:600" id="d-savings"></div>
+        </div>
+        <div class="d-variants" id="d-variants-sec">
+          <div class="d-var-lbl">Pilih Varian:</div>
+          <div class="d-var-chips" id="d-vars"></div>
+        </div>
+        <div class="d-qty">
+          <span style="font-size:13px;font-weight:700">Jumlah:</span>
+          <button class="qty-btn" onclick="changeDetQty(-1)">−</button>
+          <span class="qty-val" id="det-qty">1</span>
+          <button class="qty-btn" onclick="changeDetQty(1)">+</button>
+          <span style="font-size:12px;color:var(--gr)" id="d-stock"></span>
+        </div>
+        <div class="d-actions" style="grid-template-columns:1fr 1fr 1fr">
+          <button class="d-btn d-btn-out" onclick="addWishlistDet()">❤️ Wishlist</button>
+          <button class="d-btn d-btn-main" onclick="addToCartDet()">🛒 Keranjang</button>
+          <button class="d-btn d-btn-wa" onclick="orderWhatsApp()">📱 Order WA</button>
+        </div>
+        <div class="d-guarantees">
+          <div class="d-gua-item"><span>🚚</span> Gratis Ongkir min. Rp 50rb</div>
+          <div class="d-gua-item"><span>🔄</span> Retur dalam 7 hari</div>
+          <div class="d-gua-item"><span>✅</span> Produk terverifikasi asli</div>
+          <div class="d-gua-item"><span>🔒</span> Pembayaran aman & terlindungi</div>
+        </div>
+        <div class="d-seller-card" id="d-seller-card">
+          <div class="d-sc-top">
+            <div class="d-sc-ico" id="d-seller-ico">🏪</div>
+            <div>
+              <div class="d-sc-name" id="d-seller-name"></div>
+              <div class="d-sc-loc" id="d-seller-loc">📍 Padang, Sumatera Barat</div>
+              <div style="display:flex;gap:8px;margin-top:5px">
+                <span style="font-size:11px;color:var(--grn);font-weight:600">⭐ Toko Pilihan</span>
+                <span style="font-size:11px;color:var(--gr)">|</span>
+                <span style="font-size:11px;color:var(--gr)">Respons &lt; 1 jam</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-tabs">
+          <div class="d-tab on" onclick="switchDTab(this,'dt-desc')">Deskripsi</div>
+          <div class="d-tab" onclick="switchDTab(this,'dt-review')">Ulasan (12)</div>
+          <div class="d-tab" onclick="switchDTab(this,'dt-ship')">Pengiriman</div>
+        </div>
+        <div class="d-tab-content on" id="dt-desc">
+          <p class="d-desc" id="d-desc"></p>
+        </div>
+        <div class="d-tab-content" id="dt-review">
+          <div class="review-item">
+            <div class="rev-top">
+              <div class="rev-avatar">A</div>
+              <div><div class="rev-name">Ahmad R. · Jakarta</div><div class="rev-stars">★★★★★</div></div>
+              <div class="rev-date" style="margin-left:auto;font-size:11px;color:var(--gr)">2 hari lalu</div>
+            </div>
+            <p class="rev-txt">Mantap sekali! Rendangnya enak banget, dagingnya empuk dan bumbunya meresap sempurna. Sudah order 3x dan selalu puas. Pengiriman juga cepat, datang masih segar.</p>
+          </div>
+          <div class="review-item">
+            <div class="rev-top">
+              <div class="rev-avatar" style="background:var(--blu)">S</div>
+              <div><div class="rev-name">Siti N. · Batam</div><div class="rev-stars">★★★★★</div></div>
+              <div class="rev-date" style="margin-left:auto;font-size:11px;color:var(--gr)">1 minggu lalu</div>
+            </div>
+            <p class="rev-txt">Kangen masakan kampung akhirnya terobati. Packed dengan baik, frozen-nya masih oke. Rekomen banget buat perantau yang kangen rendang asli Minang!</p>
+          </div>
+          <div class="review-item">
+            <div class="rev-top">
+              <div class="rev-avatar" style="background:var(--grn)">B</div>
+              <div><div class="rev-name">Budi S. · Surabaya</div><div class="rev-stars">★★★★☆</div></div>
+              <div class="rev-date" style="margin-left:auto;font-size:11px;color:var(--gr)">2 minggu lalu</div>
+            </div>
+            <p class="rev-txt">Enak, tapi ongkirnya agak mahal karena frozen harus pakai ekspedisi khusus. Tapi worth it lah untuk rasanya yang autentik. Seller juga responsif.</p>
+          </div>
+        </div>
+        <div class="d-tab-content" id="dt-ship">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:12px;align-items:flex-start;background:var(--lt);border-radius:8px;padding:12px">
+              <span style="font-size:20px">🚚</span>
+              <div><div style="font-size:13px;font-weight:700;margin-bottom:2px">JNE Regular (2-4 hari)</div><div style="font-size:12px;color:var(--gr)">Estimasi ongkir Rp 15.000–45.000 tergantung kota tujuan</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;background:var(--lt);border-radius:8px;padding:12px">
+              <span style="font-size:20px">⚡</span>
+              <div><div style="font-size:13px;font-weight:700;margin-bottom:2px">SiCepat YES (1-2 hari)</div><div style="font-size:12px;color:var(--gr)">Rekomendasi untuk produk frozen — dijamin tiba segar</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;background:var(--lt);border-radius:8px;padding:12px">
+              <span style="font-size:20px">🏍️</span>
+              <div><div style="font-size:13px;font-weight:700;margin-bottom:2px">Same Day (Padang & Bukittinggi)</div><div style="font-size:12px;color:var(--gr)">Tiba di hari yang sama untuk area Kota Padang & Bukittinggi</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SELLER DASHBOARD ═══════════════ -->
+<div class="page" id="page-seller-dash">
+  <div class="seller-dash">
+    <div style="margin-bottom:18px;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-size:20px;font-weight:700">📊 Seller Center</div>
+        <div style="font-size:13px;color:var(--gr);margin-top:2px">Selamat datang, <strong>Dapur Bu Eti Padang</strong></div>
+      </div>
+      <button onclick="goHome()" style="background:var(--lt);border:1.5px solid var(--bdr);padding:8px 16px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;color:var(--dk)">← Kembali ke Toko</button>
+    </div>
+    <div class="dash-grid">
+      <div class="dash-sidebar">
+        <div class="dash-sb-hdr">
+          <h4>Dapur Bu Eti Padang</h4>
+          <p>⭐ Seller Pilihan · Padang</p>
+        </div>
+        <div class="dash-menu-item on" onclick="dashTab('dash-overview',this)"><span class="di">📈</span> Ringkasan</div>
+        <div class="dash-menu-item" onclick="dashTab('dash-orders',this)"><span class="di">📦</span> Pesanan Masuk</div>
+        <div class="dash-menu-item" onclick="dashTab('dash-products',this)"><span class="di">🏷️</span> Kelola Produk</div>
+        <div class="dash-menu-item" onclick="dashTab('dash-finance',this)"><span class="di">💰</span> Keuangan</div>
+        <div class="dash-menu-item" onclick="dashTab('dash-promo',this)"><span class="di">📣</span> Promosi</div>
+        <div class="dash-menu-item" onclick="dashTab('dash-setting',this)"><span class="di">⚙️</span> Pengaturan Toko</div>
+      </div>
+      <div class="dash-content">
+
+        <!-- OVERVIEW -->
+        <div class="dash-tab-content on" id="dash-overview">
+          <div class="dash-ttl">📈 Ringkasan Penjualan</div>
+          <div class="d-kpi-grid">
+            <div class="d-kpi"><div class="d-kpi-n">Rp 4,2jt</div><div class="d-kpi-l">Pendapatan Bulan Ini</div><div class="d-kpi-trend">▲ +23% vs bulan lalu</div></div>
+            <div class="d-kpi"><div class="d-kpi-n">38</div><div class="d-kpi-l">Pesanan Selesai</div><div class="d-kpi-trend">▲ +12% vs bulan lalu</div></div>
+            <div class="d-kpi"><div class="d-kpi-n">1.240</div><div class="d-kpi-l">Total Produk Terjual</div><div class="d-kpi-trend">▲ Sejak bergabung</div></div>
+            <div class="d-kpi"><div class="d-kpi-n">4.9⭐</div><div class="d-kpi-l">Rating Toko</div><div class="d-kpi-trend">▲ Dari 89 ulasan</div></div>
+          </div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--dk)">Pesanan Terbaru</div>
+          <table class="dash-table">
+            <tr><th>ID Pesanan</th><th>Produk</th><th>Pembeli</th><th>Total</th><th>Status</th><th>Aksi</th></tr>
+            <tr><td style="font-family:monospace;font-size:12px">#RM-20240115</td><td>Rendang 500gr × 2</td><td>Ahmad R. · Jakarta</td><td style="color:var(--r);font-weight:700">Rp 170.000</td><td><span class="order-status os-new">Pesanan Baru</span></td><td><button onclick="toast('Pesanan dikonfirmasi!','✅')" style="background:var(--r);color:#fff;border:none;padding:5px 12px;border-radius:5px;font-size:11px;cursor:pointer;font-weight:600">Konfirmasi</button></td></tr>
+            <tr><td style="font-family:monospace;font-size:12px">#RM-20240114</td><td>Keripik Sanjai × 3</td><td>Siti N. · Batam</td><td style="color:var(--r);font-weight:700">Rp 84.000</td><td><span class="order-status os-process">Diproses</span></td><td><button onclick="toast('Input resi berhasil!','📦')" style="background:var(--blu);color:#fff;border:none;padding:5px 12px;border-radius:5px;font-size:11px;cursor:pointer;font-weight:600">Input Resi</button></td></tr>
+            <tr><td style="font-family:monospace;font-size:12px">#RM-20240113</td><td>Rendang + Dendeng</td><td>Budi S. · Surabaya</td><td style="color:var(--r);font-weight:700">Rp 230.000</td><td><span class="order-status os-sent">Dikirim</span></td><td><span style="font-size:12px;color:var(--gr)">JNE87654321</span></td></tr>
+            <tr><td style="font-family:monospace;font-size:12px">#RM-20240110</td><td>Hampers Lebaran</td><td>Dewi R. · Medan</td><td style="color:var(--r);font-weight:700">Rp 175.000</td><td><span class="order-status os-done">Selesai</span></td><td><span style="font-size:12px;color:var(--grn);font-weight:600">✓ Dana Diterima</span></td></tr>
+          </table>
+        </div>
+
+        <!-- ORDERS -->
+        <div class="dash-tab-content" id="dash-orders">
+          <div class="dash-ttl">📦 Semua Pesanan</div>
+          <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+            <button onclick="toast('Filter pesanan baru','📦')" style="padding:7px 14px;border-radius:7px;border:1.5px solid var(--r);color:var(--r);background:#fff;font-size:12px;font-weight:700;cursor:pointer">Pesanan Baru (5)</button>
+            <button onclick="toast('Filter diproses','⚙️')" style="padding:7px 14px;border-radius:7px;border:1.5px solid var(--bdr);color:var(--gr);background:#fff;font-size:12px;font-weight:600;cursor:pointer">Diproses (3)</button>
+            <button onclick="toast('Filter dikirim','🚚')" style="padding:7px 14px;border-radius:7px;border:1.5px solid var(--bdr);color:var(--gr);background:#fff;font-size:12px;font-weight:600;cursor:pointer">Dikirim (8)</button>
+            <button onclick="toast('Filter selesai','✅')" style="padding:7px 14px;border-radius:7px;border:1.5px solid var(--bdr);color:var(--gr);background:#fff;font-size:12px;font-weight:600;cursor:pointer">Selesai (22)</button>
+          </div>
+          <p style="font-size:13px;color:var(--gr);text-align:center;padding:32px">Fitur manajemen pesanan lengkap tersedia setelah integrasi backend.</p>
+        </div>
+
+        <!-- PRODUCTS -->
+        <div class="dash-tab-content" id="dash-products">
+          <div class="dash-ttl" style="display:flex;justify-content:space-between;align-items:center">
+            <span>🏷️ Kelola Produk</span>
+            <button onclick="toast('Form tambah produk segera hadir!','➕')" style="background:var(--r);color:#fff;border:none;padding:9px 18px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer">+ Tambah Produk</button>
+          </div>
+          <table class="dash-table">
+            <tr><th>Produk</th><th>Harga</th><th>Stok</th><th>Terjual</th><th>Status</th><th>Aksi</th></tr>
+            <tr><td style="font-weight:600">🥩 Rendang Daging Sapi Premium</td><td class="money" style="color:var(--r);font-weight:700">Rp 85.000</td><td style="color:var(--grn);font-weight:700">48</td><td>1.240</td><td><span class="order-status os-sent">Aktif</span></td><td style="display:flex;gap:6px"><button onclick="toast('Edit produk','✏️')" style="background:var(--lt);border:1px solid var(--bdr);padding:4px 10px;border-radius:5px;font-size:11px;cursor:pointer">Edit</button></td></tr>
+            <tr><td style="font-weight:600">🍖 Dendeng Balado 250gr</td><td style="color:var(--r);font-weight:700">Rp 65.000</td><td style="color:var(--grn);font-weight:700">23</td><td>567</td><td><span class="order-status os-sent">Aktif</span></td><td><button onclick="toast('Edit produk','✏️')" style="background:var(--lt);border:1px solid var(--bdr);padding:4px 10px;border-radius:5px;font-size:11px;cursor:pointer">Edit</button></td></tr>
+            <tr><td style="font-weight:600">🎁 Hampers Lebaran Minang</td><td style="color:var(--r);font-weight:700">Rp 175.000</td><td style="color:#ea580c;font-weight:700">5</td><td>89</td><td><span class="order-status os-new">Stok Menipis</span></td><td><button onclick="toast('Edit produk','✏️')" style="background:var(--lt);border:1px solid var(--bdr);padding:4px 10px;border-radius:5px;font-size:11px;cursor:pointer">Edit</button></td></tr>
+          </table>
+        </div>
+
+        <!-- FINANCE -->
+        <div class="dash-tab-content" id="dash-finance">
+          <div class="dash-ttl">💰 Keuangan</div>
+          <div class="d-kpi-grid">
+            <div class="d-kpi"><div class="d-kpi-n">Rp 3,8jt</div><div class="d-kpi-l">Saldo Tersedia</div></div>
+            <div class="d-kpi"><div class="d-kpi-n">Rp 650rb</div><div class="d-kpi-l">Dalam Proses</div></div>
+            <div class="d-kpi"><div class="d-kpi-n">Rp 28jt</div><div class="d-kpi-l">Total Pendapatan</div></div>
+            <div class="d-kpi"><div class="d-kpi-n">0%</div><div class="d-kpi-l">Komisi (3 bln gratis)</div></div>
+          </div>
+          <button onclick="toast('Penarikan saldo berhasil diajukan!','💸')" style="background:var(--r);color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sf)">💸 Tarik Saldo Sekarang</button>
+        </div>
+
+        <!-- PROMO -->
+        <div class="dash-tab-content" id="dash-promo">
+          <div class="dash-ttl">📣 Kelola Promosi</div>
+          <div style="display:grid;gap:12px">
+            <div style="background:var(--lt);border-radius:10px;padding:16px;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-weight:700;margin-bottom:4px">🏷️ Diskon Produk</div><div style="font-size:12.5px;color:var(--gr)">Atur diskon untuk produk tertentu</div></div>
+              <button onclick="toast('Fitur diskon produk sedang disiapkan!','🏷️')" style="background:var(--r);color:#fff;border:none;padding:9px 18px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer">Atur Diskon</button>
+            </div>
+            <div style="background:var(--lt);border-radius:10px;padding:16px;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-weight:700;margin-bottom:4px">⚡ Ikut Flash Sale</div><div style="font-size:12.5px;color:var(--gr)">Daftarkan produk ke Flash Sale platform</div></div>
+              <button onclick="toast('Pendaftaran flash sale disubmit!','⚡')" style="background:var(--rd);color:#fff;border:none;padding:9px 18px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer">Daftarkan</button>
+            </div>
+            <div style="background:var(--lt);border-radius:10px;padding:16px;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-weight:700;margin-bottom:4px">⭐ Upgrade ke Seller Premium</div><div style="font-size:12.5px;color:var(--gr)">Muncul di posisi teratas pencarian · Rp 99rb/bulan</div></div>
+              <button onclick="toast('Redirecting ke halaman upgrade...','⭐')" style="background:var(--g);color:#fff;border:none;padding:9px 18px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer">Upgrade</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTING -->
+        <div class="dash-tab-content" id="dash-setting">
+          <div class="dash-ttl">⚙️ Pengaturan Toko</div>
+          <div class="form-grid">
+            <div class="fg"><label>Nama Toko</label><input type="text" value="Dapur Bu Eti Padang"></div>
+            <div class="fg"><label>Deskripsi Toko</label><textarea rows="3">Rendang dan masakan Minang asli dari Padang sejak 2010. Dikirim ke seluruh Indonesia.</textarea></div>
+            <div class="fg"><label>Nomor WhatsApp</label><input type="tel" value="08123456789"></div>
+            <div class="fg"><label>Rekening Bank</label><input type="text" value="BCA · 1234567890 · Bu Eti"></div>
+            <button class="btn-submit" onclick="toast('Pengaturan toko berhasil disimpan!','✅')">Simpan Perubahan</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CART SIDEBAR ─── -->
+<div class="overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="sidebar" id="cart-sidebar">
+  <div class="sb-hdr">
+    <div class="sb-ttl">🛒 Keranjang <span id="cart-count-lbl" style="color:var(--gr);font-size:13px;font-weight:400"></span></div>
+    <button class="sb-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="sb-body" id="cart-body"></div>
+  <div class="sb-footer" id="cart-footer"></div>
+</div>
+
+<!-- ─── WISHLIST SIDEBAR ─── -->
+<div class="overlay" id="wl-overlay" onclick="toggleWishlist()"></div>
+<div class="sidebar" id="wl-sidebar">
+  <div class="sb-hdr">
+    <div class="sb-ttl">❤️ Wishlist</div>
+    <button class="sb-close" onclick="toggleWishlist()">✕</button>
+  </div>
+  <div class="sb-body" id="wl-body"></div>
+</div>
+
+<!-- ─── SELLER MODAL ─── -->
+<div class="modal-bg" id="seller-modal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-ttl">🏪 Daftar Jadi Seller RanahMart</div>
+      <button class="modal-x" onclick="closeModal('seller-modal')">✕</button>
+    </div>
+    <div class="form-info">✅ Daftar gratis · 0% komisi 3 bulan pertama · Support onboarding siap membantu</div>
+    <div class="form-grid" style="margin-top:14px">
+      <div class="form-grid g2">
+        <div class="fg"><label>Nama Lengkap *</label><input type="text" placeholder="Nama pemilik toko"></div>
+        <div class="fg"><label>Nama Toko *</label><input type="text" placeholder="Contoh: Rendang Bu Eti"></div>
+      </div>
+      <div class="form-grid g2">
+        <div class="fg"><label>Nomor WhatsApp *</label><input type="tel" placeholder="08xxxxxxxxxx"></div>
+        <div class="fg"><label>Email *</label><input type="email" placeholder="email@kamu.com"></div>
+      </div>
+      <div class="form-grid g2">
+        <div class="fg"><label>Kota Asal *</label>
+          <select><option>Pilih Kota...</option><option>Padang</option><option>Bukittinggi</option><option>Payakumbuh</option><option>Solok</option><option>Pariaman</option><option>Padang Panjang</option><option>Sawahlunto</option><option>Lainnya</option></select>
+        </div>
+        <div class="fg"><label>Kategori Produk *</label>
+          <select><option>Pilih Kategori...</option><option>Makanan & Kuliner</option><option>Fashion Minang</option><option>Kerajinan Tangan</option><option>Kopi & Minuman</option><option>Bumbu & Rempah</option><option>Lainnya</option></select>
+        </div>
+      </div>
+      <div class="fg"><label>Nama Rekening Bank</label><input type="text" placeholder="Contoh: BCA · 1234567890 · Nama Pemilik"></div>
+      <div class="fg"><label>Cerita Singkat tentang Produkmu</label><textarea rows="3" placeholder="Apa yang membuat produkmu spesial? Sejak kapan berjualan?"></textarea></div>
+      <button class="btn-submit" onclick="submitSeller()">🚀 Daftar Sekarang — GRATIS</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── LOGIN MODAL ─── -->
+<div class="modal-bg" id="login-modal">
+  <div class="modal" style="width:420px">
+    <div class="modal-hdr">
+      <div class="modal-ttl">👤 Masuk ke RanahMart</div>
+      <button class="modal-x" onclick="closeModal('login-modal')">✕</button>
+    </div>
+    <div class="form-grid">
+      <div class="fg"><label>Email / Nomor WA</label><input type="text" placeholder="email@kamu.com atau 08xx..."></div>
+      <div class="fg"><label>Password</label><input type="password" placeholder="Masukkan password"></div>
+      <button class="btn-submit" onclick="toast('Login berhasil! Selamat datang di RanahMart 🎉','👤');closeModal('login-modal')">Masuk</button>
+      <div style="text-align:center;font-size:13px;color:var(--gr)">Belum punya akun? <span style="color:var(--r);cursor:pointer;font-weight:700" onclick="closeModal('login-modal');openSellerModal()">Daftar sekarang</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CHECKOUT MODAL ─── -->
+<div class="modal-bg" id="checkout-modal">
+  <div class="modal" style="width:580px">
+    <div class="modal-hdr">
+      <div class="modal-ttl">🛍️ Checkout</div>
+      <button class="modal-x" onclick="closeModal('checkout-modal')">✕</button>
+    </div>
+    <div class="ck-steps">
+      <div class="ck-step on" id="cks1">1. Pesanan</div>
+      <div class="ck-step" id="cks2">2. Pengiriman</div>
+      <div class="ck-step" id="cks3">3. Pembayaran</div>
+    </div>
+    <!-- Step 1 -->
+    <div class="ck-content on" id="ck1">
+      <div id="ck-items"></div>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <input type="text" placeholder="Kode voucher (contoh: RANAHFIRST)" style="flex:1;padding:10px 13px;border:1.5px solid var(--bdr);border-radius:7px;font-size:13px;outline:none">
+        <button onclick="toast('Voucher RANAHFIRST berhasil! Gratis ongkir ditambahkan ✅','🎁')" style="background:var(--g);color:#fff;border:none;padding:10px 16px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer">Pakai</button>
+      </div>
+      <button class="btn-checkout" style="margin-top:14px" onclick="ckNext(2)">Lanjut ke Pengiriman →</button>
+    </div>
+    <!-- Step 2 -->
+    <div class="ck-content" id="ck2">
+      <div class="form-grid">
+        <div class="form-grid g2">
+          <div class="fg"><label>Nama Penerima</label><input type="text" placeholder="Nama lengkap"></div>
+          <div class="fg"><label>Nomor HP</label><input type="tel" placeholder="08xxxxxxxxxx"></div>
+        </div>
+        <div class="fg"><label>Alamat Lengkap</label><textarea rows="2" placeholder="Jalan, nomor, RT/RW, Kelurahan..."></textarea></div>
+        <div class="form-grid g2">
+          <div class="fg"><label>Kota</label><input type="text" placeholder="Jakarta Selatan"></div>
+          <div class="fg"><label>Kode Pos</label><input type="text" placeholder="12345"></div>
+        </div>
+        <div class="fg"><label>Pilih Ekspedisi</label>
+          <select><option>JNE Regular (2-4 hari) · Rp 25.000</option><option>SiCepat YES (1-2 hari) · Rp 40.000</option><option>Anteraja Same Day · Rp 65.000</option></select>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <button onclick="ckNext(1)" style="flex:1;background:var(--lt);border:1.5px solid var(--bdr);padding:12px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer">← Kembali</button>
+        <button onclick="ckNext(3)" style="flex:2;background:var(--r);color:#fff;border:none;padding:12px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sf)">Lanjut ke Pembayaran →</button>
+      </div>
+    </div>
+    <!-- Step 3 -->
+    <div class="ck-content" id="ck3">
+      <div style="font-size:13.5px;font-weight:700;margin-bottom:12px">Pilih Metode Pembayaran</div>
+      <div class="pay-method">
+        <div class="pm-item on" onclick="selectPay(this)"><div class="pm-ico">📱</div>QRIS</div>
+        <div class="pm-item" onclick="selectPay(this)"><div class="pm-ico">🏦</div>Transfer Bank</div>
+        <div class="pm-item" onclick="selectPay(this)"><div class="pm-ico">💳</div>Kartu Kredit</div>
+        <div class="pm-item" onclick="selectPay(this)"><div class="pm-ico">💰</div>COD</div>
+      </div>
+      <div style="background:var(--lt);border-radius:8px;padding:14px;margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--gr);margin-bottom:5px"><span>Subtotal produk</span><span id="ck-sub">Rp 0</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--gr);margin-bottom:5px"><span>Ongkos kirim</span><span>Rp 25.000</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--grn);font-weight:600;margin-bottom:5px"><span>Voucher RANAHFIRST</span><span>- Rp 25.000</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:700;color:var(--dk);border-top:1px solid var(--bdr);padding-top:10px;margin-top:6px"><span>Total Bayar</span><span id="ck-total" style="color:var(--r)">Rp 0</span></div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button onclick="ckNext(2)" style="flex:1;background:var(--lt);border:1.5px solid var(--bdr);padding:12px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer">← Kembali</button>
+        <button onclick="placeOrder()" style="flex:2;background:var(--r);color:#fff;border:none;padding:12px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sf)">✅ Bayar Sekarang</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast-el">🛒 Produk ditambahkan!</div>
+
+<!-- WA FLOAT -->
+<button class="wa-float" onclick="window.open('https://wa.me/6287753444120?text=Halo%20RanahMart!%20Saya%20mau%20bertanya...','_blank')" title="Chat WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</button>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">
+      <div class="logo"><div class="logo-ico">🍢</div><div><div class="logo-name">RanahMart</div></div></div>
+      <p>Platform marketplace oleh-oleh Minangkabau terpercaya. Menghubungkan UMKM dan pengrajin asli Minang dengan perantau di seluruh Indonesia dan mancanegara.</p>
+      <div class="contact-info">
+        <span>📍 Jl. Veteran No. 1, Padang, Sumatera Barat</span>
+        <span>📧 halo@ranahmart.id</span>
+        <span>📱 0751-XXXXXXX (Senin–Sabtu, 08.00–21.00)</span>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>RanahMart</h5>
+      <a>Tentang Kami</a><a>Karir</a><a>Blog</a><a>Press</a><a>Kebijakan Privasi</a>
+    </div>
+    <div class="foot-col">
+      <h5>Untuk Seller</h5>
+      <a onclick="openSellerModal()">Daftar Seller</a><a>Panduan Seller</a><a>Biaya & Komisi</a><a onclick="openSellerDash()">Seller Center</a><a>Seller Academy</a>
+    </div>
+    <div class="foot-col">
+      <h5>Bantuan</h5>
+      <a>Pusat Bantuan</a><a>Lacak Pesanan</a><a>Kebijakan Retur</a><a>Cara Pembayaran</a><a>Hubungi Kami</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 RanahMart — Alam Takambang Jadi Guru 🏔️</span>
+    <div class="foot-pay">
+      <span>Metode Bayar:</span>
+      <span class="pay-badge">QRIS</span><span class="pay-badge">BCA</span><span class="pay-badge">BNI</span><span class="pay-badge">Mandiri</span><span class="pay-badge">COD</span><span class="pay-badge">GoPay</span><span class="pay-badge">OVO</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════ DATA ═══════════
+const PRODUCTS = [
+  {id:1,name:"Rendang Daging Sapi Premium Bu Eti",price:85000,old:110000,emoji:"🥩",seller:"Dapur Bu Eti Padang",city:"Padang",sold:1240,rating:4.9,tag:"rendang",disc:23,isNew:false,fship:true,stock:48,desc:"Rendang daging sapi premium dimasak selama 8 jam dengan 25 rempah pilihan asli Minangkabau. Menggunakan daging sapi segar dan santan kelapa asli. Tahan hingga 3 bulan dalam kondisi beku.",variants:["250gr","500gr","1kg"]},
+  {id:2,name:"Keripik Sanjai Balado Pedas Khas Bukittinggi",price:28000,old:35000,emoji:"🍟",seller:"Sanjai Mak Itam",city:"Bukittinggi",sold:890,rating:4.8,tag:"keripik",disc:20,isNew:true,fship:true,stock:120,desc:"Keripik singkong sanjai khas Bukittinggi dengan taburan balado pedas yang kaya rempah. Dibuat dari singkong pilihan, digoreng kering, dan dibumbui sambal balado tradisional.",variants:["250gr","500gr"]},
+  {id:3,name:"Dendeng Balado Kering Asli Padang 250gr",price:65000,old:80000,emoji:"🍖",seller:"UD Dendeng Pak Mak",city:"Padang",sold:567,rating:4.7,tag:"rendang",disc:19,isNew:false,fship:false,stock:23,desc:"Dendeng sapi tipis dan kering dengan bumbu balado merah yang kaya rempah. Dikeringkan secara tradisional untuk menghasilkan cita rasa gurih dan tahan lama.",variants:["250gr","500gr"]},
+  {id:4,name:"Batik Minang Songket Modern Premium",price:250000,old:320000,emoji:"👘",seller:"Batik Ranah Minang",city:"Padang Panjang",sold:123,rating:4.9,tag:"batik",disc:22,isNew:true,fship:true,stock:15,desc:"Kain batik Minang bergaya modern dengan motif tradisional Minangkabau. Dibuat oleh pengrajin lokal menggunakan teknik tradisional yang diwariskan turun-temurun.",variants:["S","M","L","XL"]},
+  {id:5,name:"Kopi Kawa Daun Solok Premium 200gr",price:35000,old:42000,emoji:"☕",seller:"Kopi Minang Asli",city:"Solok",sold:445,rating:4.6,tag:"kopi",disc:17,isNew:false,fship:true,stock:78,desc:"Kopi kawa daun khas Solok, minuman tradisional Minang yang unik dan langka. Dibuat dari daun kopi pilihan yang diproses secara tradisional. Rasa earthy, sedikit pahit, dan menyegarkan.",variants:["200gr","500gr"]},
+  {id:6,name:"Gelamai / Caramel Tradisional Payakumbuh",price:22000,old:28000,emoji:"🍯",seller:"Toko Oleh-Oleh Faisal",city:"Payakumbuh",sold:332,rating:4.7,tag:"kue",disc:21,isNew:false,fship:true,stock:56,desc:"Gelamai atau dodol Minang khas Payakumbuh yang manis, kenyal, dan legit. Dibuat dari beras ketan, santan, dan gula merah pilihan. Makanan tradisional yang wajib dibawa pulang.",variants:["250gr","500gr"]},
+  {id:7,name:"Kerupuk Sanjai Putih Original 500gr",price:18000,old:22000,emoji:"🫓",seller:"Sanjai Mak Itam",city:"Bukittinggi",sold:1102,rating:4.8,tag:"keripik",disc:18,isNew:false,fship:true,stock:200,desc:"Kerupuk sanjai putih khas Bukittinggi yang renyah dan gurih. Cocok sebagai camilan atau pelengkap makan. Dibuat dari singkong segar pilihan tanpa pengawet.",variants:["250gr","500gr","1kg"]},
+  {id:8,name:"Bumbu Rendang Instant Asli Minang",price:25000,old:30000,emoji:"🌶️",seller:"Bumbu Uni Lis",city:"Padang",sold:788,rating:4.9,tag:"bumbu",disc:17,isNew:true,fship:true,stock:145,desc:"Bumbu rendang instan asli Minang dengan 20+ rempah pilihan. Praktis tinggal masak, cita rasa dijamin autentik seperti masak sendiri. Tanpa MSG dan pengawet buatan.",variants:["100gr","200gr","500gr"]},
+  {id:9,name:"Hampers Lebaran Oleh-Oleh Minang Eksklusif",price:175000,old:220000,emoji:"🎁",seller:"RanahGift Official",city:"Padang",sold:89,rating:5.0,tag:"hampers",disc:20,isNew:true,fship:true,stock:30,desc:"Paket hampers eksklusif berisi rendang 250gr, keripik sanjai 250gr, gelamai 200gr, dan kopi kawa 100gr. Dikemas dalam kotak premium siap kirim. Cocok untuk hadiah Lebaran, pernikahan, atau korporat.",variants:["Paket Standar","Paket Premium","Paket VIP"]},
+  {id:10,name:"Cincin Perak Khas Minang Ukiran Tradisional",price:135000,old:180000,emoji:"💍",seller:"Kerajinan Perak Koto Gadang",city:"Koto Gadang",sold:56,rating:4.8,tag:"perhiasan",disc:25,isNew:false,fship:false,stock:12,desc:"Cincin perak 925 dengan ukiran motif tradisional Minangkabau. Dibuat tangan oleh pengrajin perak di Koto Gadang, Bukittinggi — salah satu sentra pengrajin perak tertua di Sumatera.",variants:["Size 6","Size 7","Size 8","Size 9"]},
+  {id:11,name:"Gulai Itiak (Bebek) Tanak Asli Payakumbuh",price:95000,old:120000,emoji:"🦆",seller:"Masakan Minang Pak Sutan",city:"Payakumbuh",sold:234,rating:4.8,tag:"rendang",disc:21,isNew:false,fship:true,stock:20,desc:"Gulai bebek kampung khas Payakumbuh yang dimasak dengan santan kental dan rempah lengkap. Cita rasa gurih dan kaya bumbu, daging bebek empuk meresap sempurna.",variants:["1 ekor","2 ekor"]},
+  {id:12,name:"Lopek Bugi / Lemang Tapai Tradisional",price:45000,old:55000,emoji:"🫘",seller:"Kue Tradisional Mak Ani",city:"Pariaman",sold:178,rating:4.7,tag:"kue",disc:18,isNew:true,fship:false,stock:35,desc:"Kue tradisional Minang berupa ketan manis yang dibungkus daun pisang. Tersedia dalam varian isi kacang hijau dan kelapa gula merah. Makanan khas yang langka dan autentik.",variants:["Kacang Hijau","Kelapa Gula Merah"]},
+];
+
+// ═══════════ STATE ═══════════
+let cart=[],wishlist=[],detQty=1,currentProduct=null,activeFilter='all',timerSec=3*3600+28*60;
+
+// ═══════════ FORMAT ═══════════
+const fmt=n=>"Rp "+n.toLocaleString('id-ID');
+const stars=r=>{const f=Math.round(r);return "★".repeat(f)+"☆".repeat(5-f)};
+
+// ═══════════ RENDER PRODUCTS ═══════════
+function renderProducts(data,gridId){
+  const g=document.getElementById(gridId);if(!g)return;
+  if(!data.length){g.innerHTML='<div class="no-results">😕 Tidak ada produk yang sesuai. Coba filter lain.</div>';return;}
+  g.innerHTML=data.map(p=>`
+    <div class="pcard" onclick="openDetail(${p.id})">
+      ${p.isNew?'<div class="p-new">BARU</div>':''}
+      ${p.sold>500&&!p.isNew?'<div class="p-hot">🔥 HOT</div>':''}
+      <button class="wish-btn ${wishlist.find(w=>w.id===p.id)?'liked':''}" onclick="event.stopPropagation();toggleWish(${p.id})" title="Tambah ke Wishlist">♥</button>
+      <div class="pimg-wrap">
+        <div class="pimg">${p.emoji}</div>
+        ${p.fship?'<div class="p-fship">🚚 Gratis Ongkir</div>':''}
+      </div>
+      <div class="pinfo">
+        <div class="pname">${p.name}</div>
+        <div class="pprice-row">
+          <span class="pprice">${fmt(p.price)}</span>
+          <span class="pdisc">${p.disc}%</span>
+        </div>
+        <div class="pold">${fmt(p.old)}</div>
+        <div class="pmeta">
+          <span class="prating">${stars(p.rating)} ${p.rating}</span>
+          <span class="psold">${p.sold.toLocaleString()} terjual</span>
+        </div>
+        <div class="pseller">🏪 ${p.seller}</div>
+      </div>
+      <button class="padd" onclick="event.stopPropagation();addCart(${p.id})">🛒 + Keranjang</button>
+    </div>
+  `).join('');
+}
+
+// ═══════════ FILTERS ═══════════
+function filterCat(tag){
+  activeFilter=tag;
+  document.querySelectorAll('.cat').forEach(c=>c.classList.remove('on'));
+  let data=tag==='all'?PRODUCTS:PRODUCTS.filter(p=>p.tag===tag);
+  renderProducts(data,'pgrid');
+  document.querySelectorAll('.nit').forEach(n=>n.classList.remove('on'));
+  document.getElementById('prods-sec')?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function sortFilter(type,el){
+  document.querySelectorAll('.fchip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  let data=[...PRODUCTS];
+  if(activeFilter!=='all') data=data.filter(p=>p.tag===activeFilter);
+  if(type==='new') data=data.filter(p=>p.isNew);
+  else if(type==='best') data=[...data].sort((a,b)=>b.sold-a.sold);
+  else if(type==='rating') data=[...data].sort((a,b)=>b.rating-a.rating);
+  else if(type==='disc') data=[...data].sort((a,b)=>b.disc-a.disc);
+  else if(type==='fship') data=data.filter(p=>p.fship);
+  renderProducts(data,'pgrid');
+}
+function applySort(val){
+  let data=activeFilter==='all'?[...PRODUCTS]:PRODUCTS.filter(p=>p.tag===activeFilter);
+  if(val==='price-asc') data.sort((a,b)=>a.price-b.price);
+  else if(val==='price-desc') data.sort((a,b)=>b.price-a.price);
+  else if(val==='sold') data.sort((a,b)=>b.sold-a.sold);
+  else if(val==='rating') data.sort((a,b)=>b.rating-a.rating);
+  renderProducts(data,'pgrid');
+}
+function applyPriceFilter(){
+  const mn=parseInt(document.getElementById('pmin').value)||0;
+  const mx=parseInt(document.getElementById('pmax').value)||Infinity;
+  let data=PRODUCTS.filter(p=>p.price>=mn&&p.price<=mx);
+  if(activeFilter!=='all') data=data.filter(p=>p.tag===activeFilter);
+  renderProducts(data,'pgrid');
+}
+function doSearch(){
+  const q=document.getElementById('srch').value.toLowerCase().trim();
+  const cat=document.getElementById('srch-cat').value;
+  if(!q){renderProducts(PRODUCTS,'pgrid');return;}
+  let data=PRODUCTS.filter(p=>p.name.toLowerCase().includes(q)||p.seller.toLowerCase().includes(q)||p.tag.includes(q)||p.city.toLowerCase().includes(q));
+  if(cat!=='all') data=data.filter(p=>p.tag===cat);
+  renderProducts(data,'pgrid');
+  document.getElementById('prods-sec')?.scrollIntoView({behavior:'smooth'});
+  if(!data.length) toast('Tidak ada hasil untuk "'+q+'"','😕');
+}
+
+// ═══════════ PRODUCT DETAIL ═══════════
+function openDetail(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p)return;
+  currentProduct=p;detQty=1;
+  showPage('page-detail');
+  document.getElementById('bread-cat').textContent=p.tag.charAt(0).toUpperCase()+p.tag.slice(1);
+  document.getElementById('bread-name').textContent=p.name.substring(0,30)+'...';
+  document.getElementById('d-main-img').textContent=p.emoji;
+  document.getElementById('d-name').textContent=p.name;
+  document.getElementById('d-stars').textContent=stars(p.rating);
+  document.getElementById('d-rating-val').textContent=p.rating;
+  document.getElementById('d-sold-lbl').textContent=p.sold.toLocaleString()+' terjual';
+  document.getElementById('d-review-count').textContent='12 ulasan';
+  document.getElementById('d-price').textContent=fmt(p.price);
+  document.getElementById('d-old').textContent=fmt(p.old);
+  document.getElementById('d-disc-badge').textContent='Hemat '+p.disc+'%';
+  document.getElementById('d-savings').textContent='Hemat '+fmt(p.old-p.price)+' dari harga normal!';
+  document.getElementById('d-stock').textContent='Stok: '+p.stock+' tersisa';
+  document.getElementById('d-desc').textContent=p.desc;
+  document.getElementById('d-seller-name').textContent=p.seller;
+  document.getElementById('d-seller-loc').textContent='📍 '+p.city+', Sumatera Barat';
+  document.getElementById('det-qty').textContent=1;
+  const vars=document.getElementById('d-vars');
+  vars.innerHTML=p.variants.map((v,i)=>`<div class="vchip ${i===0?'on':''}" onclick="selectVar(this)">${v}</div>`).join('');
+  const thumbs=document.getElementById('d-thumbs');
+  thumbs.innerHTML=[p.emoji,p.emoji,p.emoji].map((e,i)=>`<div class="d-thumb ${i===0?'on':''}" onclick="this.parentNode.querySelectorAll('.d-thumb').forEach(t=>t.classList.remove('on'));this.classList.add('on')">${e}</div>`).join('');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function selectVar(el){
+  document.querySelectorAll('.vchip').forEach(v=>v.classList.remove('on'));
+  el.classList.add('on');
+}
+function changeDetQty(d){
+  detQty=Math.max(1,Math.min(currentProduct?.stock||99,detQty+d));
+  document.getElementById('det-qty').textContent=detQty;
+}
+function addToCartDet(){
+  if(!currentProduct)return;
+  const v=document.querySelector('.vchip.on')?.textContent||currentProduct.variants[0];
+  for(let i=0;i<detQty;i++) addCartItem(currentProduct,v);
+  toast('🛒 '+currentProduct.name.substring(0,28)+'... × '+detQty+' ditambahkan!','✅');
+}
+function addWishlistDet(){
+  if(!currentProduct)return;
+  toggleWish(currentProduct.id);
+}
+function orderWhatsApp(){
+  if(!currentProduct)return;
+  const msg=`Halo RanahMart! Saya mau pesan:\n*${currentProduct.name}*\nJumlah: ${detQty}\nVarian: ${document.querySelector('.vchip.on')?.textContent||'-'}\nTotal: ${fmt(currentProduct.price*detQty)}`;
+  window.open('https://wa.me/6287753444120?text='+encodeURIComponent(msg),'_blank');
+}
+function switchDTab(el,id){
+  document.querySelectorAll('.d-tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.d-tab-content').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById(id).classList.add('on');
+}
+
+// ═══════════ CART ═══════════
+function addCart(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(p) addCartItem(p,p.variants[0]);
+  toast('🛒 '+p.name.substring(0,30)+'... ditambahkan!','✅');
+}
+function addCartItem(p,variant){
+  const key=p.id+'_'+(variant||'');
+  const ex=cart.find(c=>c.key===key);
+  if(ex) ex.qty++;
+  else cart.push({...p,qty:1,variant,key});
+  updateBadges();
+}
+function updateBadges(){
+  const ct=cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cart-badge').textContent=ct;
+  document.getElementById('cart-count-lbl').textContent=ct?'('+ct+' item)':'';
+  document.getElementById('wl-badge').textContent=wishlist.length;
+}
+function toggleCart(){
+  document.getElementById('cart-sidebar').classList.toggle('on');
+  document.getElementById('cart-overlay').classList.toggle('on');
+  renderCart();
+}
+function renderCart(){
+  const body=document.getElementById('cart-body');
+  const footer=document.getElementById('cart-footer');
+  if(!cart.length){
+    body.innerHTML='<div class="cart-empty"><div class="e-ico">🛒</div><div style="font-weight:700;margin-bottom:6px">Keranjang masih kosong</div><div style="font-size:13px;color:var(--gr)">Tambahkan produk favoritmu!</div></div>';
+    footer.innerHTML='';return;
+  }
+  const sub=cart.reduce((s,c)=>s+c.price*c.qty,0);
+  body.innerHTML=cart.map(c=>`
+    <div class="cart-item">
+      <div class="ci-img">${c.emoji}</div>
+      <div class="ci-info">
+        <div class="ci-nm">${c.name}</div>
+        <div class="ci-seller">🏪 ${c.seller} · ${c.variant||''}</div>
+        <div class="ci-pr">${fmt(c.price)}</div>
+        <div class="ci-qty">
+          <button class="cq-btn" onclick="changeCart('${c.key}',-1)">−</button>
+          <span class="cq-val">${c.qty}</span>
+          <button class="cq-btn" onclick="changeCart('${c.key}',1)">+</button>
+        </div>
+      </div>
+      <button class="ci-del" onclick="removeCart('${c.key}')">🗑</button>
+    </div>
+  `).join('');
+  footer.innerHTML=`
+    <div class="sb-coupon"><input type="text" placeholder="Kode voucher (RANAHFIRST)"><button onclick="toast('Voucher berhasil! Gratis ongkir ditambahkan','🎁')">Pakai</button></div>
+    <div class="sb-sum-row"><span>Subtotal (${cart.reduce((s,c)=>s+c.qty,0)} produk)</span><span>${fmt(sub)}</span></div>
+    <div class="sb-sum-row"><span>Estimasi ongkir</span><span>Rp 25.000</span></div>
+    <div class="sb-sum-row"><span style="color:var(--grn)">Voucher RANAHFIRST</span><span style="color:var(--grn)">- Rp 25.000</span></div>
+    <div class="sb-sum-row total"><span>Total</span><span class="amt">${fmt(sub)}</span></div>
+    <button class="btn-checkout" onclick="openCheckout()">🛍️ Checkout Sekarang</button>
+  `;
+}
+function changeCart(key,d){
+  const item=cart.find(c=>c.key===key);
+  if(!item)return;
+  item.qty+=d;
+  if(item.qty<=0) cart=cart.filter(c=>c.key!==key);
+  updateBadges();renderCart();
+}
+function removeCart(key){
+  cart=cart.filter(c=>c.key!==key);
+  updateBadges();renderCart();
+  toast('Produk dihapus dari keranjang','🗑');
+}
+
+// ═══════════ WISHLIST ═══════════
+function toggleWish(id){
+  const idx=wishlist.findIndex(w=>w.id===id);
+  if(idx>=0){wishlist.splice(idx,1);toast('Dihapus dari wishlist','💔');}
+  else{const p=PRODUCTS.find(x=>x.id===id);wishlist.push(p);toast('Ditambahkan ke wishlist ❤️','❤️');}
+  updateBadges();
+  document.querySelectorAll('.wish-btn').forEach(b=>{});
+  renderProducts(PRODUCTS.filter(p=>activeFilter==='all'||p.tag===activeFilter),'pgrid');
+}
+function toggleWishlist(){
+  document.getElementById('wl-sidebar').classList.toggle('on');
+  document.getElementById('wl-overlay').classList.toggle('on');
+  const body=document.getElementById('wl-body');
+  if(!wishlist.length){body.innerHTML='<div class="cart-empty"><div class="e-ico">❤️</div><div style="font-weight:700;margin-bottom:6px">Wishlist masih kosong</div><div style="font-size:13px;color:var(--gr)">Simpan produk favoritmu di sini!</div></div>';return;}
+  body.innerHTML=wishlist.map(p=>`
+    <div class="wl-item">
+      <div class="ci-img">${p.emoji}</div>
+      <div class="ci-info" style="flex:1">
+        <div class="ci-nm">${p.name}</div>
+        <div class="ci-pr">${fmt(p.price)}</div>
+      </div>
+      <button onclick="addCart(${p.id});toggleWish(${p.id})" style="background:var(--r);color:#fff;border:none;padding:8px 12px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer">+ Keranjang</button>
+    </div>
+  `).join('');
+}
+
+// ═══════════ CHECKOUT ═══════════
+function openCheckout(){
+  document.getElementById('cart-sidebar').classList.remove('on');
+  document.getElementById('cart-overlay').classList.remove('on');
+  const sub=cart.reduce((s,c)=>s+c.price*c.qty,0);
+  document.getElementById('ck-items').innerHTML=cart.map(c=>`
+    <div class="ck-sum-item">
+      <div class="ck-si-img">${c.emoji}</div>
+      <div style="flex:1"><div class="ck-si-nm">${c.name} × ${c.qty}</div><div style="font-size:11px;color:var(--gr)">${c.seller}</div></div>
+      <div class="ck-si-pr">${fmt(c.price*c.qty)}</div>
+    </div>
+  `).join('');
+  document.getElementById('ck-sub').textContent=fmt(sub);
+  document.getElementById('ck-total').textContent=fmt(sub);
+  ckNext(1);
+  openModal('checkout-modal');
+}
+function ckNext(step){
+  [1,2,3].forEach(i=>{
+    document.getElementById('ck'+i).classList.toggle('on',i===step);
+    document.getElementById('cks'+i).classList.toggle('on',i===step);
+    if(i<step) document.getElementById('cks'+i).classList.add('done');
+    else document.getElementById('cks'+i).classList.remove('done');
+  });
+}
+function selectPay(el){
+  document.querySelectorAll('.pm-item').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+}
+function placeOrder(){
+  closeModal('checkout-modal');
+  cart=[];updateBadges();
+  toast('✅ Pesanan berhasil! Konfirmasi via WhatsApp segera dikirim','🎉');
+  setTimeout(()=>alert('🎉 Pesanan berhasil ditempatkan!\n\nRingkasan:\n• Pembayaran: QRIS\n• Ekspedisi: SiCepat YES\n• Estimasi tiba: 1-2 hari kerja\n\nKonfirmasi & resi akan dikirim ke WhatsApp Anda.\n\nTerima kasih berbelanja di RanahMart! 🏔️'),600);
+}
+
+// ═══════════ MODALS ═══════════
+function openModal(id){document.getElementById(id).classList.add('on')}
+function closeModal(id){document.getElementById(id).classList.remove('on')}
+document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('on')}));
+function openSellerModal(){openModal('seller-modal')}
+function openLoginModal(){openModal('login-modal')}
+function submitSeller(){
+  closeModal('seller-modal');
+  toast('🎉 Pendaftaran berhasil! Tim kami akan menghubungi Anda dalam 1x24 jam','✅');
+}
+
+// ═══════════ SELLER DASHBOARD ═══════════
+function openSellerDash(){showPage('page-seller-dash')}
+function dashTab(id,el){
+  document.querySelectorAll('.dash-tab-content').forEach(c=>c.classList.remove('on'));
+  document.querySelectorAll('.dash-menu-item').forEach(m=>m.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  el.classList.add('on');
+}
+
+// ═══════════ PAGES ═══════════
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goHome(){showPage('page-home')}
+
+// ═══════════ NOTIFICATIONS ═══════════
+let notifBadgeCount=3;
+function toggleNotif(){
+  const d=document.getElementById('notif-drop');
+  d.classList.toggle('on');
+}
+function closeNotif(){document.getElementById('notif-drop').classList.remove('on')}
+function markAllRead(){
+  notifBadgeCount=0;
+  document.getElementById('notif-badge').textContent='0';
+  document.querySelectorAll('.notif-item.unread').forEach(n=>n.classList.remove('unread'));
+  document.querySelectorAll('.notif-dot').forEach(d=>d.remove());
+  closeNotif();
+  toast('Semua notifikasi ditandai dibaca','✅');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.hdr-ico-pos')) closeNotif();
+});
+
+// ═══════════ TOAST ═══════════
+let toastTimer;
+function toast(msg,icon=''){
+  const t=document.getElementById('toast-el');
+  t.textContent=(icon?' '+icon+' ':'')+msg;
+  t.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('on'),3000);
+}
+
+// ═══════════ TIMER ═══════════
+function updateTimer(){
+  timerSec--;if(timerSec<0)timerSec=4*3600;
+  const h=Math.floor(timerSec/3600),m=Math.floor((timerSec%3600)/60),s=timerSec%60;
+  document.getElementById('th').textContent=String(h).padStart(2,'0');
+  document.getElementById('tm').textContent=String(m).padStart(2,'0');
+  document.getElementById('ts').textContent=String(s).padStart(2,'0');
+}
+setInterval(updateTimer,1000);
+
+// ═══════════ SCROLL HELPER ═══════════
+function scrollTo(sel){
+  const el=document.querySelector(sel);
+  if(el)el.scrollIntoView({behavior:'smooth'});
+}
+
+// ═══════════ INIT ═══════════
+renderProducts(PRODUCTS,'pgrid');
+renderProducts([...PRODUCTS].sort((a,b)=>b.sold-a.sold).slice(0,5),'pgrid2');
+</script>
+</body>
+</html>
